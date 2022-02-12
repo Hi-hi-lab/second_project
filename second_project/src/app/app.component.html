@@ -1,0 +1,107 @@
+<p>
+  <mat-toolbar>
+    <span>Vehicle Repository</span>
+  </mat-toolbar>
+</p>
+
+<mat-tab-group>
+  <mat-tab label="Form">
+    <form class="serch-form" role="button">
+      <mat-form-field class="from-full-width" appearance="fill">
+        <mat-label>Find your vehicle</mat-label>
+        <input matInput type="search" name="q" id="site-search">
+        <button mat-button>Search</button>
+      </mat-form-field>
+    </form>
+    <mat-card>
+      <mat-card-content>
+        <form class="insert-form">
+          <mat-form-field class="insert-full-width" appearance="fill">
+            <mat-label>ID</mat-label>
+            <input matInput placeholder="Ex. 2203" value=" ">
+          </mat-form-field>
+        
+          <mat-form-field class="insert-full-width" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="input your name">
+          </mat-form-field>
+
+          <mat-form-field class="insert-full-width" appearance="fill">
+            <mat-label>Model</mat-label>
+            <input matInput placeholder="Ex. toyota">
+          </mat-form-field>
+
+          <mat-form-field class="insert-full-width" appearance="fill">
+            <mat-label>Price</mat-label>
+            <input matInput placeholder="Ex. 120000">
+          </mat-form-field>
+
+          <button mat-button color="primary">INSERT</button>
+        </form>        
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="Output">
+    <h2>Vehicle Information</h2>
+    <mat-card-title>
+      <span>Data</span>
+      <span class="spacer"></span>
+      <div class="icon-button-row">
+        <div class="icon-flex-container">
+          <button mat-icon-button color="black" aria-label="Example icon button with a home icon">
+            <mat-icon>Import Export</mat-icon>
+          </button>
+          <button mat-fab color="primary" aria-label="Example icon button with a home icon">
+            <mat-icon>Add Circle</mat-icon>
+          </button>
+          <button mat-fab color="primary" aria-label="Example icon button with a home icon">
+            <mat-icon>Toc</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-card-title>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+    
+      <!-- Model Column -->
+      <ng-container matColumnDef="model">
+        <th mat-header-cell *matHeaderCellDef> Model </th>
+        <td mat-cell *matCellDef="let element"> {{element.model}} </td>
+      </ng-container>
+    
+      <!-- Price Column -->
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> price </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
+
+      <!-- New/used Column -->
+      <ng-container matColumnDef="new/used">
+        <th mat-header-cell *matHeaderCellDef> New/used </th>
+        <td mat-cell *matCellDef="let element"> {{element.newused}} </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element"> {{element.action}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    
+    
+  </mat-tab>
+</mat-tab-group>
